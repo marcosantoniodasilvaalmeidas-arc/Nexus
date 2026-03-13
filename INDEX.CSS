@@ -157,12 +157,22 @@ ul li::before {
     font-weight: 500;
     border: 1px solid #e2e8f0;
     transition: all 0.25s ease;
-    text-decoration: none;          
-    display: inline-flex;           
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    min-width: 100px;               
+    cursor: default;                
+    position: relative;
+    min-width: 140px;               
+    gap: 8px;                       
+}
+
+.skill-level {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4361ee;
+    background: rgba(67, 97, 238, 0.1);
+    padding: 4px 10px;
+    border-radius: 20px;
 }
 
 .skill-tag:hover {
@@ -172,17 +182,28 @@ ul li::before {
     box-shadow: 0 6px 16px rgba(67, 97, 238, 0.25);
 }
 
-.skill-tag:active {
-    transform: translateY(-1px);
-    box-shadow: 0 3px 8px rgba(67, 97, 238, 0.3);
+.skill-tag:hover .skill-level {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
 }
 
 
 .skill-tag::after {
-    content: "↗";
-    margin-left: 6px;
+    content: attr(title);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2d3748;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
     font-size: 0.9rem;
-    opacity: 0.6;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 10;
 }
 
 .skill-tag:hover::after {
